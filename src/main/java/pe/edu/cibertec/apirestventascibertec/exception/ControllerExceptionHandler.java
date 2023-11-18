@@ -25,6 +25,22 @@ public class ControllerExceptionHandler {
         );
         return message;
     }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorMessage badCredentialsException (
+            BadCredentialsException ex,
+            WebRequest request
+    ){
+        ErrorMessage message = new ErrorMessage(
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                new Date(),
+                ex.getMessage(),
+                request.getDescription(false)
+        );
+        return message;
+    }
+
     @ExceptionHandler(MaxUploadSizeExceededException.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorMessage maxUploadSizeExceededException(MaxUploadSizeExceededException ex,

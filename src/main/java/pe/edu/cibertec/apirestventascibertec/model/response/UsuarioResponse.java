@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 public class UsuarioResponse {
 
-    private Long idusuario;
+    private Integer idusuario;
     private String nomusuario;
     private String token;
 
