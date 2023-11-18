@@ -3,6 +3,7 @@ package pe.edu.cibertec.apirestventascibertec.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.cibertec.apirestventascibertec.exception.ResourceNotFoundException;
 import pe.edu.cibertec.apirestventascibertec.model.bd.Category;
@@ -13,6 +14,8 @@ import java.util.List;
 
 //@CrossOrigin(origins = {"https://cibertec.blackboard.com", "https://intranet.cibertec.edu.pe"})
 //@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
+
+@PreAuthorize("hasRole('ADMIN')")
 @AllArgsConstructor
 @RestController
 @RequestMapping(path = "api/v1/category")
